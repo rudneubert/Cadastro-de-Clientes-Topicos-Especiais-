@@ -1,0 +1,48 @@
+index.html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF-8">
+ <title>Cadastro de Clientes</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <h1>Cadastro de Clientes</h1>
+ <form id="formCliente">
+ <input type="text" id="nome" placeholder="Nome" required>
+ <input type="email" id="email" placeholder="Email" required>
+ <button type="submit">Cadastrar</button>
+ </form>
+ <h2>Lista de Clientes</h2>
+ <ul id="listaClientes"></ul>
+ <script src="script.js"></script>
+</body>
+</html>
+style.css
+body {
+ font-family: Arial, sans-serif;
+ margin: 40px;
+}
+input {
+ padding: 8px;
+ margin: 5px;
+}
+button {
+ padding: 8px 12px;
+ cursor: pointer;
+}
+ul {
+ margin-top: 20px;
+}
+script.js
+const form = document.getElementById("formCliente");
+const lista = document.getElementById("listaClientes");
+form.addEventListener("submit", function(event) {
+ event.preventDefault();
+ const nome = document.getElementById("nome").value;
+ const email = document.getElementById("email").value;
+ const li = document.createElement("li");
+ li.textContent = `${nome} - ${email}`;
+ lista.appendChild(li);
+ form.reset();
+});
